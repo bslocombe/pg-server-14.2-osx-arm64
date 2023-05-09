@@ -25,7 +25,13 @@ module.exports = function(dataDir, config) {
     var initResult = spawnSync(
       path.join(__dirname, 'server/bin/initdb'),
       [ '-D', dataDir, '--pwfile=' + path.join(__dirname, 'defaultpw'), '--username=postgres' ]);
-    console.log(initResult)
+      if (initResult.status !== 0) {
+        process.stderr.write(result.stderr);
+        process.exit(result.status);
+      } else {
+        process.stdout.write(result.stdout);
+        process.stderr.write(result.stderr);
+      }
   }
 
   if(dataDirStat && !dataDirStat.isDirectory()) {
