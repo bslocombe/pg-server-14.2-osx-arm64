@@ -20,6 +20,7 @@ module.exports = function(dataDir, config) {
 
   try {
     var dataDirStat = fs.statSync(dataDir);
+    console.log(dataDirStat)
   } catch(err) {
     // Data directory does not exist
     var initResult = spawnSync(
@@ -40,7 +41,10 @@ module.exports = function(dataDir, config) {
       }
     }).join('\n');
 
-  fs.writeFileSync(path.join(dataDir, 'postgresql.conf'), 'conf');
+  let cc = spawn('touch', [dataDir])
+  
+  fs.writeFileSync(path.join(dataDir, 'postgresql.conf'), conf);
+
 
   var child = spawn(
     path.join(__dirname, 'server/bin/postgres'), [ '-D', dataDir ]);
