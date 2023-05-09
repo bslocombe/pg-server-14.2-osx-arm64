@@ -56,6 +56,9 @@ module.exports = function(dataDir, config) {
 
   var child = spawn(
     path.join(__dirname, 'server/bin/postgres'), [ '-D', dataDir ]);
+
+    var child = spawn(
+      'postgres', [ '-D', dataDir ]);
   
   return child
 }
