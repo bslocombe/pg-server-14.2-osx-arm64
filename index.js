@@ -16,11 +16,10 @@ var defaultConfig = {
  */
 module.exports = function(dataDir, config) {
   var fullConfig = extend(defaultConfig, config || {});
-  console.log(dataDir, fullConfig)
+  console.log(dataDir, fullConfig, '++++++++++++++++++++++++')
 
   try {
     var dataDirStat = fs.statSync(dataDir);
-    console.log(dataDirStat)
   } catch(err) {
     // Data directory does not exist
     var initResult = spawnSync(
