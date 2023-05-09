@@ -16,6 +16,7 @@ var defaultConfig = {
  */
 module.exports = function(dataDir, config) {
   var fullConfig = extend(defaultConfig, config || {});
+  console.log(dataDir, fullConfig)
 
   try {
     var dataDirStat = fs.statSync(dataDir);
