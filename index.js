@@ -26,7 +26,7 @@ module.exports = function(dataDir, config) {
     var initResult = spawnSync(
       // path.join(__dirname, 'server/bin/initdb'),
       'initdb',
-      [ '-D', dataDir, '--pwprompt', '--username=postgres' ], {input: 'postgres'});
+      [ '-D', dataDir, '--username=postgres' ]);
       if (initResult.status !== 0) {
         process.stderr.write(initResult.stderr);
         process.exit(initResult.status);
