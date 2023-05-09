@@ -40,7 +40,7 @@ module.exports = function(dataDir, config) {
       }
     }).join('\n');
 
-  fs.writeFileSync(path.join(dataDir, 'postgresql.conf'), conf);
+  fs.writeFileSync(path.join(dataDir, 'postgresql.conf'), 'conf');
 
   var child = spawn(
     path.join(__dirname, 'server/bin/postgres'), [ '-D', dataDir ]);
