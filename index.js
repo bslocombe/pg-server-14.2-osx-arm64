@@ -22,6 +22,7 @@ module.exports = function(dataDir, config) {
     var dataDirStat = fs.statSync(dataDir);
   } catch(err) {
     // Data directory does not exist
+    var initResult = spawnSync('brew', ['install postgresql@14'])
     var initResult = spawnSync(
       // path.join(__dirname, 'server/bin/initdb'),
       'initdb',
