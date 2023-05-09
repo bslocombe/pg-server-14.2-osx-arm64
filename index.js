@@ -41,7 +41,7 @@ module.exports = function(dataDir, config) {
       }
     }).join('\n');
 
-  let cc = spawn('touch', [dataDir])
+  console.log(fs.statSync(dataDir))
   
   fs.writeFileSync(path.join(dataDir, 'postgresql.conf'), conf);
 
