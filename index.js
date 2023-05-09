@@ -24,7 +24,7 @@ module.exports = function(dataDir, config) {
     // Data directory does not exist
     var initResult = spawnSync(
       path.join(__dirname, 'server/bin/initdb'),
-      [ '-D', dataDir, '--pwfile=' + path.join(__dirname, 'defaultpw'), '--username=postgres' ]);
+      [ '-D', dataDir, '--pwprompt', '--username=postgres' ], {input: 'postgres'});
       if (initResult.status !== 0) {
         process.stderr.write(result.stderr);
         process.exit(result.status);
