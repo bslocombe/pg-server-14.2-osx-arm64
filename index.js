@@ -26,11 +26,11 @@ module.exports = function(dataDir, config) {
       path.join(__dirname, 'server/bin/initdb'),
       [ '-D', dataDir, '--pwprompt', '--username=postgres' ], {input: 'postgres'});
       if (initResult.status !== 0) {
-        process.stderr.write(result.stderr);
-        process.exit(result.status);
+        process.stderr.write(initResult.stderr);
+        process.exit(initResult.status);
       } else {
-        process.stdout.write(result.stdout);
-        process.stderr.write(result.stderr);
+        process.stdout.write(initResult.stdout);
+        process.stderr.write(initResult.stderr);
       }
   }
 
